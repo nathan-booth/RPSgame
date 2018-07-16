@@ -26,7 +26,7 @@ class Game():
         Inputs:
             None
         Outputs:
-            (str) Winner: Statement of who won.
+            Winner (str): Statement of who won.
         Purpose:
             Run one round of play. Get each player's move, compute the winner, and display the new scores.
         Example:
