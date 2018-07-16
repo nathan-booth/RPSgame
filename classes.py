@@ -33,9 +33,9 @@ class Game():
             >>> game = classes.Game(3)
             >>> game.play_rnd()
             X won!
-            --- Score ---
-                X: 1
-                Y: 0
+            --- Round 1 Score ---
+                    X: 1
+                    Y: 0
         """
         hMove = Human.move()
         cMove = cPlayer.move() # testing; computer player should be set earlier
@@ -43,6 +43,7 @@ class Game():
             computer_score += 1
         else:
             human_score += 1
+        #match_stats() # TODO: decide where to call match stats
 
     def play_match(self, self.total_rnds):
         """
@@ -71,6 +72,7 @@ class Game():
             >>> compute_winner(hmove, cmove)
             Computer wins!
         """
+        # {concat matchup (human+computer): [move winner, player winner]
         matchups = {'rockpaper': ['Paper', 'Computer'],
                     'rockscissors': ['Rock', 'Human'],
                     'paperscissors': ['Scissors', 'Computer'],
