@@ -38,7 +38,7 @@ class Game():
     def __init__(self, total_rnds):
         self.total_rnds = total_rnds
 
-    def play_rnd():
+    def play_rnd(self):
         """
         Inputs:
             None
@@ -57,6 +57,17 @@ class Game():
         hMove = Human.move()
         cMove = cPlayer.move() # testing; computer player should be set earlier
         compute_winner(hMove, cMove)
+
+    def play_match(self, self.total_rnds):
+        """
+        Inputs:
+            total_rnds (num): Total match rounds from Game instance
+        Outputs:
+        Purpose:
+            Play a match of variable number rounds.
+        Example:
+        """
+        pass
 
     def compute_winner(human_move, computer_move):
         """
@@ -90,13 +101,6 @@ class Game():
 
     def match_stats():
         pass
-
-    # runs the game
-    # TODO: randomly select a computer player
-    cPlayer = Rocker()
-    for rnd in total_rnds:
-         play_rnd()
-         match_stats() # TODO: write match_stats()
 
 # --- Player Classes ---
 class Player():
