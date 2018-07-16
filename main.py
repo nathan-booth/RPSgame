@@ -14,3 +14,7 @@ play game
     if last round, then final score
     else running score
 """
+import classes
+
+game = classes.Game(0,0,3)
+print(game.human_score)
