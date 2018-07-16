@@ -95,39 +95,3 @@ class Game():
 
     def match_stats():
         pass
-
-# --- Player Classes ---
-class Player():
-  def __init__():
-    pass
-
-  def move():
-    pass
-
-  def recall_opp_move():
-    pass
-
-class Human(Player):
-  def __init__():
-    pass
-
-  def move():
-      # validate input
-    pass
-
-# may need to add intermediate Computer player class
-class Rocker(Player):
-  def __init__():
-    pass
-
-class Randomizer(Player):
-  def __init__():
-    pass
-
-class Copycat(Player):
-  def __init__():
-    pass
-
-class Cycler(Player):
-  def __init__():
-    pass
