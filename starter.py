@@ -1,12 +1,9 @@
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round. By Udacity"""
-
-moves = ['rock', 'paper', 'scissors']
+from random import randint
 
 """The Player class is the parent class for all of the Players
 in this game"""
-
-
 class Player:
     def move(self):
         return 'rock'
@@ -14,6 +11,23 @@ class Player:
     def learn(self, my_move, their_move):
         pass
 
+class Human(Player):
+  def move():
+      # validate input
+    pass
+
+# may need to add intermediate Computer player class
+class Rocker(Player):
+    pass
+
+class Randomizer(Player):
+    pass
+
+class Copycat(Player):
+    pass
+
+class Cycler(Player):
+    pass
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
@@ -39,8 +53,3 @@ class Game:
             print(f"Round {round}:")
             self.play_round()
         print("Game over!")
-
-
-if __name__ == '__main__':
-    game = Game(Player(), Player())
-    game.play_game()
