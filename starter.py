@@ -32,14 +32,12 @@ class Copycat(Player):
     pass
 
 class Cycler(Player):
-    cycle = []
-    for x in itertools.islice(itertools.cycle(range(3)), Game.play_game.rounds):
-        cycle.append(x)
     def move(self):
-        move_index = 0
-        while move_index <= 2:
-
-
+        cycle = []
+        iterate = 0
+        for x in itertools.islice(itertools.cycle(range(3)), 3): # 3 options, 3 rounds, adapted from StackOverflow
+            cycle.append(x)
+        return self.moves[cycle[iterate]]
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
