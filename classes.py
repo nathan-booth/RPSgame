@@ -50,7 +50,10 @@ class Game():
                 X: 1
                 Y: 0
         """
-        pass
+        human = Human.move()
+        computer = Rocker.move() # testing
+        # compute winner, should be another method
+        match_stats()
 
     def play_match():
         pass
@@ -66,7 +69,7 @@ class Player():
   def move():
     pass
 
-  def recall_rnd():
+  def recall_opp_move():
     pass
 
 class Human(Player):
