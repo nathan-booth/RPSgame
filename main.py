@@ -2,7 +2,7 @@
 Welcome player
 Explain rules
 
-1. choose round number from odd num >= 3
+1. choose round number from odd num >= 1
 2. randomly pick computer player
 3. Initialize class game
 4. play rounds; for each round:
