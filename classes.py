@@ -24,7 +24,7 @@ class Game():
     Inputs: num total_rnds
     Outputs: None
     Purpose:
-      Initialize the game starting conditions, including starting scores and the number of rounds to play.
+      Initialize the game starting conditions, including starting scores and the number of rounds to play, and run the game.
     Example:
         >>> game = classes.Game(3)
         >>> print(game.total_rnds)
@@ -50,10 +50,9 @@ class Game():
                 X: 1
                 Y: 0
         """
-        hMove = Human.move() # ensure this accepts lower case
-        cMove = Rocker.move() # testing; computer player should be set earlier
+        hMove = Human.move()
+        cMove = cPlayer.move() # testing; computer player should be set earlier
         compute_winner(hMove, cMove)
-        match_stats() # TODO: write match_stats()
 
     def compute_winner(human_move, computer_move):
         """
@@ -85,11 +84,15 @@ class Game():
         if move_winner == 'Scissors':
             print(player_winner + ' wins!')
 
-    def play_match():
-        pass
-
     def match_stats():
         pass
+
+    # runs the game
+    # TODO: randomly select a computer player
+    cPlayer = Rocker()
+    for rnd in total_rnds:
+         play_rnd()
+         match_stats() # TODO: write match_stats()
 
 # --- Player Classes ---
 class Player():
@@ -107,6 +110,7 @@ class Human(Player):
     pass
 
   def move():
+      # validate input
     pass
 
 # may need to add intermediate Computer player class
