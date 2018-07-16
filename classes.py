@@ -73,6 +73,7 @@ class Game():
             Computer wins!
         """
         # {concat matchup (human+computer): [move winner, player winner]
+        # TODO: add ties
         matchups = {'rockpaper': ['Paper', 'Computer'],
                     'rockscissors': ['Rock', 'Human'],
                     'paperscissors': ['Scissors', 'Computer'],
