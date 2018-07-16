@@ -37,6 +37,19 @@ class Game():
         self.total_rnds = total_rnds
 
     def play_rnd():
+        """
+        Inputs: None
+        Outputs: str stating who won
+        Purpose:
+            Run one round of play. Get each player's move, compute the winner, and display the new scores.
+        Example:
+            >>> game = classes.Game(3)
+            >>> game.play_rnd()
+            X won!
+            --- Score ---
+                X: 1
+                Y: 0
+        """
         pass
 
     def play_match():
