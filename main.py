@@ -16,5 +16,5 @@ play game
 """
 import classes
 
-game = classes.Game(0,0,3)
-print(game.human_score)
+game = classes.Game(3)
+print(game.total_rnds)

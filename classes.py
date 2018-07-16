@@ -20,20 +20,30 @@ Game
 # rock paper scissors spock lizard
 # running computer tournament
 class Game():
-  def __init__(self, human_score, computer_score, total_rnds):
-      # init stats
-      self.human_score = 0
-      self.computer_score = 0
-      self.total_rnds = 3
+    """
+    Inputs: num total_rnds
+    Outputs: None
+    Purpose:
+      Initialize the game starting conditions, including starting scores and the number of rounds to play.
+    Example:
+        >>> game = classes.Game(3)
+        >>> print(game.total_rnds)
+        3
+    """
+    human_score = 0
+    computer_score = 0
 
-  def play_rnd():
-    pass
+    def __init__(self, total_rnds):
+        self.total_rnds = total_rnds
 
-  def play_match():
-    pass
+    def play_rnd():
+        pass
 
-  def match_stats():
-    pass
+    def play_match():
+        pass
+
+    def match_stats():
+        pass
 
 # --- Player Classes ---
 class Player():
