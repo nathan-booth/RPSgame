@@ -55,6 +55,20 @@ class Game():
         # compute winner, should be another method
         match_stats()
 
+    def compute_winner():
+        """
+        Inputs:
+            hmove (str): Human move
+            cmove (str): Computer move
+        Outputs: winner (str): Text saying who won and why
+        Purpose:
+            Given the players' moves as strings, return who won and why.
+        Example:
+            >>> hmove = "Rock"
+            >>> cmove = "Paper"
+            Computer wins! Paper wraps rock.
+        """
+        
     def play_match():
         pass
 
