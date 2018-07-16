@@ -53,7 +53,7 @@ class Game():
         hMove = Human.move() # ensure this accepts lower case
         cMove = Rocker.move() # testing; computer player should be set earlier
         compute_winner(hMove, cMove)
-        match_stats()
+        match_stats() # TODO: write match_stats()
 
     def compute_winner(human_move, computer_move):
         """
@@ -68,17 +68,19 @@ class Game():
             >>> cmove = "Paper"
             Computer wins! Paper wraps rock.
         """
-        matchups = {'rockpaper': 'paper',
-                    'rockscissors': 'rock',
-                    'paperscissors': 'scissors',
-                    'paperrock': 'paper',
-                    'scissorsrock': 'rock',
-                    'scissorspaper': 'scissors'}
-        if matchups[human_move+computer_move] == 'rock':
+        matchups = {'rockpaper': ['Paper', 'Computer'],
+                    'rockscissors': ['Rock', 'Human'],
+                    'paperscissors': ['Scissors', 'Computer'],
+                    'paperrock': ['Paper', 'Human'],
+                    'scissorsrock': ['Rock', 'Computer'],
+                    'scissorspaper': ['Scissors', 'Human']}
+        move_winner, player_winner = 0, 1
+
+        if matchups[human_move+computer_move][move_winner] == 'Rock':
+            print(matchups[human_move+computer_move][player_winner] + 'wins!')
+        if matchups[human_move+computer_move][move_winner] == 'Paper':
             pass
-        if matchups[human_move+computer_move] == 'paper':
-            pass
-        if matchups[human_move+computer_move] == 'scissors':
+        if matchups[human_move+computer_move][move_winner] == 'Scissors':
             pass
 
     def play_match():
