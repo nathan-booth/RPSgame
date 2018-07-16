@@ -55,7 +55,7 @@ class Game():
         compute_winner(hMove, cMove)
         match_stats()
 
-    def compute_winner():
+    def compute_winner(human_move, computer_move):
         """
         Inputs:
             hmove (str): Human move
@@ -68,7 +68,19 @@ class Game():
             >>> cmove = "Paper"
             Computer wins! Paper wraps rock.
         """
-        
+        matchups = {'rockpaper': 'paper',
+                    'rockscissors': 'rock',
+                    'paperscissors': 'scissors',
+                    'paperrock': 'paper',
+                    'scissorsrock': 'rock',
+                    'scissorspaper': 'scissors'}
+        if matchups[human_move+computer_move] == 'rock':
+            pass
+        if matchups[human_move+computer_move] == 'paper':
+            pass
+        if matchups[human_move+computer_move] == 'scissors':
+            pass
+
     def play_match():
         pass
 
