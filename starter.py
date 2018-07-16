@@ -5,8 +5,10 @@ from random import randint
 """The Player class is the parent class for all of the Players
 in this game"""
 class Player:
+    moves = ['rock', 'paper', 'scissors']
+
     def move(self):
-        return 'rock'
+        return 'paper'
 
     def learn(self, my_move, their_move):
         pass
@@ -18,7 +20,8 @@ class Human(Player):
 
 # may need to add intermediate Computer player class
 class Rocker(Player):
-    pass
+    def move(self):
+        return 'rock'
 
 class Randomizer(Player):
     pass
