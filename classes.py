@@ -58,8 +58,8 @@ class Game():
     def compute_winner(human_move, computer_move):
         """
         Inputs:
-            hmove (str): Human move
-            cmove (str): Computer move
+            human_move (str): Human move from Player.move method
+            computer_move (str): Computer move from Player.move method
         Outputs: winner (str): Text saying who won and why
         Purpose:
             Given the players' moves as strings, return who won and why.
