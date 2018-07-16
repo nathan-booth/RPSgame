@@ -21,8 +21,10 @@ Game
 # running computer tournament
 class Game():
     """
-    Inputs: num total_rnds
-    Outputs: None
+    Inputs:
+        total_rnds (num): Number of rounds to play.
+    Outputs:
+        None
     Purpose:
       Initialize the game starting conditions, including starting scores and the number of rounds to play, and run the game.
     Example:
@@ -38,8 +40,10 @@ class Game():
 
     def play_rnd():
         """
-        Inputs: None
-        Outputs: str stating who won
+        Inputs:
+            None
+        Outputs:
+            (str) Winner: Statement of who won.
         Purpose:
             Run one round of play. Get each player's move, compute the winner, and display the new scores.
         Example:
