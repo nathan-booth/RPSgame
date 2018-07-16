@@ -50,7 +50,7 @@ class Game():
                 X: 1
                 Y: 0
         """
-        hMove = Human.move()
+        hMove = Human.move() # ensure this accepts lower case
         cMove = Rocker.move() # testing; computer player should be set earlier
         compute_winner(hMove, cMove)
         match_stats()
@@ -68,7 +68,7 @@ class Game():
             >>> cmove = "Paper"
             Computer wins! Paper wraps rock.
         """
-
+        
     def play_match():
         pass
 
