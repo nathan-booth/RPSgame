@@ -13,9 +13,9 @@ Explain rules
     C. display running score
     D. display opponents' previous move
 """
-import classes
+import starter
 from random import randint
 
 if __name__ == '__main__':
-    game = Game(Player(), Player())
+    game = starter.Game(starter.Player(), starter.Rocker())
     game.play_game()
