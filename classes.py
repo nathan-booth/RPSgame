@@ -16,13 +16,16 @@ Game
 
 """
 # TODO: add game versions, like:
-# traditional 
+# traditional
 # rock paper scissors spock lizard
 # running computer tournament
 class Game():
-  def __init__():
-    pass
-  
+  def __init__(self, human_score, computer_score, total_rnds):
+      # init stats
+      self.human_score = 0
+      self.computer_score = 0
+      self.total_rnds = 3
+
   def play_rnd():
     pass
 
@@ -42,7 +45,7 @@ class Player():
 
   def recall_rnd():
     pass
-  
+
 class Human(Player):
   def __init__():
     pass
@@ -51,7 +54,7 @@ class Human(Player):
     pass
 
 # may need to add intermediate Computer player class
-class Rocker(Player)
+class Rocker(Player):
   def __init__():
     pass
 
@@ -66,4 +69,3 @@ class Copycat(Player):
 class Cycler(Player):
   def __init__():
     pass
-
