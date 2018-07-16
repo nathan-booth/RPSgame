@@ -66,7 +66,8 @@ class Game():
         Example:
             >>> hmove = "Rock"
             >>> cmove = "Paper"
-            Computer wins! Paper wraps rock.
+            >>> compute_winner(hmove, cmove)
+            Computer wins!
         """
         matchups = {'rockpaper': ['Paper', 'Computer'],
                     'rockscissors': ['Rock', 'Human'],
@@ -74,14 +75,15 @@ class Game():
                     'paperrock': ['Paper', 'Human'],
                     'scissorsrock': ['Rock', 'Computer'],
                     'scissorspaper': ['Scissors', 'Human']}
-        move_winner, player_winner = 0, 1
+        move_winner = matchups[human_move+computer_move][0]
+        player_winner = matchups[human_move+computer_move][1]
 
-        if matchups[human_move+computer_move][move_winner] == 'Rock':
-            print(matchups[human_move+computer_move][player_winner] + 'wins!')
-        if matchups[human_move+computer_move][move_winner] == 'Paper':
-            pass
-        if matchups[human_move+computer_move][move_winner] == 'Scissors':
-            pass
+        if move_winner == 'Rock':
+            print(player_winner + 'wins!')
+        if move_winner == 'Paper':
+            print(player_winner + 'wins!')
+        if move_winner == 'Scissors':
+            print(player_winner + 'wins!')
 
     def play_match():
         pass
