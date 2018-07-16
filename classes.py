@@ -50,9 +50,9 @@ class Game():
                 X: 1
                 Y: 0
         """
-        human = Human.move()
-        computer = Rocker.move() # testing
-        # compute winner, should be another method
+        hMove = Human.move()
+        cMove = Rocker.move() # testing; computer player should be set earlier
+        compute_winner(hMove, cMove)
         match_stats()
 
     def compute_winner():
@@ -68,7 +68,7 @@ class Game():
             >>> cmove = "Paper"
             Computer wins! Paper wraps rock.
         """
-        
+
     def play_match():
         pass
 
