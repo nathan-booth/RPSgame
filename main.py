@@ -14,6 +14,8 @@ Explain rules
     D. display opponents' previous move
 """
 import classes
+from random import randint
 
-game = classes.Game(3)
-print(game.total_rnds)
+if __name__ == '__main__':
+    game = Game(Player(), Player())
+    game.play_game()
