@@ -39,13 +39,17 @@ class Game():
         """
         hMove = Human.move()
         cMove = cPlayer.move() # testing; computer player should be set earlier
-        compute_winner(hMove, cMove)
+        if compute_winner(hMove, cMove) == 'Computer':
+            computer_score += 1
+        else:
+            human_score += 1
 
     def play_match(self, self.total_rnds):
         """
         Inputs:
             total_rnds (num): Total match rounds from Game instance
         Outputs:
+            None
         Purpose:
             Play a match of variable number rounds.
         Example:
@@ -57,7 +61,8 @@ class Game():
         Inputs:
             human_move (str): Human move from Player.move method
             computer_move (str): Computer move from Player.move method
-        Outputs: winner (str): Text saying who won and why
+        Outputs:
+            winner (str): Text saying who won and why
         Purpose:
             Given the players' moves as strings, return who won and why.
         Example:
@@ -77,9 +82,12 @@ class Game():
 
         if move_winner == 'Rock':
             print(player_winner + ' wins!')
+            return player_winner
         if move_winner == 'Paper':
             print(player_winner + ' wins!')
+            return player_winner
         if move_winner == 'Scissors':
+            return player_winner
             print(player_winner + ' wins!')
 
     def match_stats():
