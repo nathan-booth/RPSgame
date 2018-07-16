@@ -64,8 +64,8 @@ class Game():
         Purpose:
             Given the players' moves as strings, return who won and why.
         Example:
-            >>> hmove = "Rock"
-            >>> cmove = "Paper"
+            >>> hmove = "rock"
+            >>> cmove = "paper"
             >>> compute_winner(hmove, cmove)
             Computer wins!
         """
@@ -79,11 +79,11 @@ class Game():
         player_winner = matchups[human_move+computer_move][1]
 
         if move_winner == 'Rock':
-            print(player_winner + 'wins!')
+            print(player_winner + ' wins!')
         if move_winner == 'Paper':
-            print(player_winner + 'wins!')
+            print(player_winner + ' wins!')
         if move_winner == 'Scissors':
-            print(player_winner + 'wins!')
+            print(player_winner + ' wins!')
 
     def play_match():
         pass
