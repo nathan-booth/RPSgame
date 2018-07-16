@@ -1,20 +1,3 @@
-"""
-Game
-  init
-
-  welcome rules
-
-  pick rounds
-
-  run round
-
-  stats (score, player moves)
-
-  round score
-
-  final score
-
-"""
 # TODO: add game versions, like:
 # traditional
 # rock paper scissors spock lizard
