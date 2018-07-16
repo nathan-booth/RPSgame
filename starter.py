@@ -1,6 +1,7 @@
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round. By Udacity"""
 from random import randint
+import itertools
 
 """The Player class is the parent class for all of the Players
 in this game"""
@@ -24,13 +25,21 @@ class Rocker(Player):
         return 'rock'
 
 class Randomizer(Player):
-    pass
+    def move(self):
+        return self.moves[randint(0, len(self.moves)-1)]
 
 class Copycat(Player):
     pass
 
 class Cycler(Player):
-    pass
+    cycle = []
+    for x in itertools.islice(itertools.cycle(range(3)), 10):
+        cycle.append(x)
+    def move(self):
+        move_index = 0
+        while move_index <= 2:
+
+
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
