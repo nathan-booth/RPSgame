@@ -33,7 +33,7 @@ class Copycat(Player):
 
 class Cycler(Player):
     cycle = []
-    for x in itertools.islice(itertools.cycle(range(3)), 10):
+    for x in itertools.islice(itertools.cycle(range(3)), Game.play_game.rounds):
         cycle.append(x)
     def move(self):
         move_index = 0
@@ -61,7 +61,8 @@ class Game:
 
     def play_game(self):
         print("Game start!")
-        for round in range(3):
+        rounds = 3
+        for round in range(rounds):
             print(f"Round {round}:")
             self.play_round()
         print("Game over!")
