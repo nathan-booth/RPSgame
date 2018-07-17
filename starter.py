@@ -12,7 +12,23 @@ class Player:
         return 'paper'
 
     def learn(self, my_move, their_move):
-        pass
+        """
+        Inputs:
+            my_move (str):
+            their_move (str):
+        Outputs:
+            their_move (str):
+        Example:
+            >>> learn('paper', 'rock')
+            Opponent played rock in the previous round.
+        """
+        my_moves = []
+        their_moves = []
+        my_moves.append(my_move)
+        their_moves.append(their_move)
+
+        previous_move = their_moves[-1]
+        return f"Your opponent played {previous_move}."
 
 class Human(Player):
   def move():
