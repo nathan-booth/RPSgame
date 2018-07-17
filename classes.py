@@ -61,35 +61,70 @@ class Game:
         self.p1 = p1
         self.p2 = p2
 
-    def score(self, p1_move, p2_move, p1_score=0, p2_score=0): # FIX: track score
+    def winner(self, p1_move, p2_move): # FIX: track score
         """
         Inputs:
             p1_move (str): Player 1's move
             p2_move (str): Player 2's move
-            p1_score (int): Player 1's current score
-            p2_score (int): Player 2's current score
         Outputs:
-            Winner + Scoreboard (str): Whether player 1 or 2 won and their incremented scores
-            p1_score (int): Player 1's updated score
-            p2_score (int): Player 2's updated score
+            Winner (str): Whether player 1 or 2 won
         Purpose:
-            Compute the winner of a round and display a scoreboard of the game thus far and track the current player scores.
+            Compute the winner of a round.
         Example:
+            >>> self.winner('rock', 'paper')
+            Player 2 wins!
+            >>> self.winner('paper', 'paper')
+            No winner.
+            >>> self.winner('rock', 'scissors')
+            Player 1 wins!
         """
-        score = f" Score\n {p1_score} | {p2_score}\n-----"
-
         if p1_move == p2_move:
-            return "No winner.\n" + score, p1_score, p2_score
+            return "No winner.\n", 0 # no winner
         elif ((p1_move == 'rock' and p2_move == 'scissors') or \
               (p1_move == 'scissors' and p2_move == 'paper') or \
               (p1_move == 'paper' and p2_move == 'rock')):
-              p1_score += 1
-              return "Player 1 wins!\n" + score, p1_score, p2_score
+              return "Player 1 wins!\n", 1 # player 1
         else:
-            p2_score += 1
-            return "Player 2 wins!\n" + score, p1_score, p2_score
+            return "Player 2 wins!\n", 2 # player 2
+
+    def score(self, scored):
+        """
+        Inputs:
+            scored (int): Encoding of which player score to increment
+        Outputs:
+            p1_score (int): Player 1's updated score
+            p2_score (int): Player 2's updated score
+            Scoreboard
+        Purpose:
+            Display a scoreboard of the game and track the current player scores.
+        """
+        # score = f" Score\n {p1_score} | {p2_score}\n-----"
+        pass
 
     def play_round(self):
+        """
+        Inputs:
+            p1_score (int): Player 1's score
+            p2_score (int): Player 2's score
+            p1_move (str): Player 1's previous move
+            p2_move (str): Player 2's previous move
+        Outputs:
+            winnner (str): Winner of the round
+            scoreboard (str): Match score
+            player_actions (str): Player moves from current round
+        Purpose:
+        Example:
+            >>> self.play_round(1, 2, 'rock', 'paper')
+            Player 2 wins!
+            --- Round 1 Score ---
+                Player 1: 1
+                Player 2: 3
+            --- Player Actions ---
+            Player 1:
+                Your opponent played paper in the previous round.
+            Player 2:
+                Your opponent played rock in the previous round.
+        """
         # Move
         p1_move = self.p1.move()
         p2_move = self.p2.move()

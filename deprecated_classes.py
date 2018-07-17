@@ -32,10 +32,7 @@ class Game():
         Example:
             >>> game = classes.Game(3)
             >>> game.play_rnd()
-            X won!
-            --- Round 1 Score ---
-                    X: 1
-                    Y: 0
+            
         """
         hMove = Human.move()
         cMove = cPlayer.move() # testing; computer player should be set earlier
