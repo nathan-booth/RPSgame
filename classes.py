@@ -27,8 +27,8 @@ class Player:
         my_moves.append(my_move)
         opp_moves.append(opp_move)
 
-        opp_previous_move = opp_moves[-1]
-        return f"Your opponent played {opp_previous_move} in the previous round."
+        opp_previous_move = opp_moves[-1] # last move
+        print(f"Your opponent played {opp_previous_move} in the previous round.")
 
 class Human(Player):
   def move():
