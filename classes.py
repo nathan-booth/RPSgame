@@ -60,9 +60,9 @@ class Game:
         self.p1 = p1
         self.p2 = p2
 
-    def score(self, p1_move, p2_move):
+    def score(self, p1_move, p2_move): # FIX: track score
         p1_score, p2_score = 0, 0
-        score = f"Score\n {p1_score} | {p2_score}"
+        score = f" Score\n {p1_score} | {p2_score}\n-----"
 
         if p1_move == p2_move:
             return "No winner.\n" + score
@@ -79,6 +79,8 @@ class Game:
         move1 = self.p1.move()
         move2 = self.p2.move()
         print(f"Player 1: {move1} \nPlayer 2: {move2}\n-----")
+
+        print(self.score(move1, move2))
 
         p1_recall, p1_my_move, p1_opp_move = self.p1.learn(move1, move2)
         p2_recall, p2_my_move, p2_opp_move = self.p2.learn(move2, move1)
