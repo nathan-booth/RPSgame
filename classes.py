@@ -1,97 +1,82 @@
-# TODO: add game versions, like:
-# traditional
-# rock paper scissors spock lizard
-# running computer tournament
-class Game():
-    """
-    Inputs:
-        total_rnds (num): Number of rounds to play.
-    Outputs:
-        None
-    Purpose:
-      Initialize the game starting conditions, including starting scores and the number of rounds to play, and run the game.
-    Example:
-        >>> game = classes.Game(3)
-        >>> print(game.total_rnds)
-        3
-    """
-    human_score = 0
-    computer_score = 0
+"""This program plays a game of Rock, Paper, Scissors between two Players,
+and reports both Player's scores each round. By Udacity"""
+from random import randint
+import itertools
 
-    def __init__(self, total_rnds):
-        self.total_rnds = total_rnds
+"""The Player class is the parent class for all of the Players
+in this game"""
+class Player:
+    moves = ['rock', 'paper', 'scissors']
 
-    def play_rnd(self):
+    def move(self):
+        return 'paper'
+
+    def learn(self, my_move, their_move):
         """
         Inputs:
-            None
+            my_move (str):
+            their_move (str):
         Outputs:
-            Winner (str): Statement of who won.
-        Purpose:
-            Run one round of play. Get each player's move, compute the winner, and display the new scores.
+            their_move (str):
         Example:
-            >>> game = classes.Game(3)
-            >>> game.play_rnd()
-            X won!
-            --- Round 1 Score ---
-                    X: 1
-                    Y: 0
+            >>> learn('paper', 'rock')
+            Opponent played rock in the previous round.
         """
-        hMove = Human.move()
-        cMove = cPlayer.move() # testing; computer player should be set earlier
-        if compute_winner(hMove, cMove) == 'Computer':
-            computer_score += 1
-        else:
-            human_score += 1
-        #match_stats() # TODO: decide where to call match stats
+        my_moves = []
+        their_moves = []
+        my_moves.append(my_move)
+        their_moves.append(their_move)
 
-    def play_match(self, self.total_rnds):
-        """
-        Inputs:
-            total_rnds (num): Total match rounds from Game instance
-        Outputs:
-            None
-        Purpose:
-            Play a match of variable number rounds.
-        Example:
-        """
-        pass
+        previous_move = their_moves[-1]
+        return f"Your opponent played {previous_move}."
 
-    def compute_winner(human_move, computer_move):
-        """
-        Inputs:
-            human_move (str): Human move from Player.move method
-            computer_move (str): Computer move from Player.move method
-        Outputs:
-            winner (str): Text saying who won and why
-        Purpose:
-            Given the players' moves as strings, return who won and why.
-        Example:
-            >>> hmove = "rock"
-            >>> cmove = "paper"
-            >>> compute_winner(hmove, cmove)
-            Computer wins!
-        """
-        # {concat matchup (human+computer): [move winner, player winner]
-        # TODO: add ties
-        matchups = {'rockpaper': ['Paper', 'Computer'],
-                    'rockscissors': ['Rock', 'Human'],
-                    'paperscissors': ['Scissors', 'Computer'],
-                    'paperrock': ['Paper', 'Human'],
-                    'scissorsrock': ['Rock', 'Computer'],
-                    'scissorspaper': ['Scissors', 'Human']}
-        move_winner = matchups[human_move+computer_move][0]
-        player_winner = matchups[human_move+computer_move][1]
+class Human(Player):
+  def move():
+      # validate input
+    pass
 
-        if move_winner == 'Rock':
-            print(player_winner + ' wins!')
-            return player_winner
-        if move_winner == 'Paper':
-            print(player_winner + ' wins!')
-            return player_winner
-        if move_winner == 'Scissors':
-            return player_winner
-            print(player_winner + ' wins!')
+# may need to add intermediate Computer player class
+class Rocker(Player):
+    def move(self):
+        return 'rock'
 
-    def match_stats():
-        pass
+class Randomizer(Player):
+    def move(self):
+        return self.moves[randint(0, len(self.moves)-1)]
+
+class Copycat(Player):
+    pass
+
+class Cycler(Player):
+    def move(self):
+        cycle = []
+        iterate = 0
+        for x in itertools.islice(itertools.cycle(range(3)), 3): # 3 options, 3 rounds, adapted from StackOverflow
+            cycle.append(x)
+        return self.moves[cycle[iterate]]
+
+def beats(one, two):
+    return ((one == 'rock' and two == 'scissors') or
+            (one == 'scissors' and two == 'paper') or
+            (one == 'paper' and two == 'rock'))
+
+
+class Game:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+    def play_round(self):
+        move1 = self.p1.move()
+        move2 = self.p2.move()
+        print(f"Player 1: {move1}  Player 2: {move2}")
+        self.p1.learn(move1, move2)
+        self.p2.learn(move2, move1)
+
+    def play_game(self):
+        print("Game start!")
+        rounds = 3
+        for round in range(rounds):
+            print(f"Round {round}:")
+            self.play_round()
+        print("Game over!")
