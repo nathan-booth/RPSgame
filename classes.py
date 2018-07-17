@@ -55,16 +55,25 @@ class Cycler(Player): # TODO: pass previous move to this move
             my_move = 'rock'
             return self.moves[0]
 
-def beats(one, two):
-    return ((one == 'rock' and two == 'scissors') or
-            (one == 'scissors' and two == 'paper') or
-            (one == 'paper' and two == 'rock'))
-
-
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
+
+    def score(self, p1_move, p2_move):
+        p1_score, p2_score = 0, 0
+        score = f"Score\n {p1_score} | {p2_score}"
+
+        if p1_move == p2_move:
+            return "No winner.\n" + score
+        elif ((p1_move == 'rock' and p2_move == 'scissors') or \
+              (p1_move == 'scissors' and p2_move == 'paper') or \
+              (p1_move == 'paper' and p2_move == 'rock')):
+              p1_score += 1
+              return "Player 1 wins!\n" + score
+        else:
+            p2_score += 1
+            return "Player 2 wins!\n" + score
 
     def play_round(self):
         move1 = self.p1.move()
