@@ -13,10 +13,11 @@ class Player:
     def recall(self, my_move, opp_move):
         """
         Inputs:
-            my_move (str):
-            opp_move (str):
+            my_move (str): 'rock' 'paper' or 'sciessors'
+            opp_move (str): 'rock' 'paper' or 'sciessors'
         Outputs:
-            opp_move (str):
+            my_move (str): 'rock' 'paper' or 'sciessors'
+            opp_move (str): 'rock' 'paper' or 'sciessors'
         Example:
             >>> recall('paper', 'rock')
             Your opponent played rock in the previous round.
