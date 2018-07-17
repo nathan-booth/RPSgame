@@ -1,14 +1,13 @@
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round. By Udacity"""
 from random import randint
-import itertools
 
 """The Player class is the parent class for all of the Players
 in this game"""
 class Player:
     moves = ['rock', 'paper', 'scissors']
 
-    def move(self):
+    def move(self, my_move=None, opp_move=None):
         return 'scissors'
 
     def learn(self, my_move, opp_move):
@@ -22,7 +21,7 @@ class Player:
             >>> learn('paper', 'rock')
             Your opponent played rock in the previous round.
         """
-        return f"Your opponent played {opp_move} in the previous round."
+        return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
 
 class Human(Player):
   def move():
@@ -41,18 +40,18 @@ class Randomizer(Player):
 class Copycat(Player):
     pass
 
-class Cycler(Player):
-    def move(self):
-        # print(self.my_moves)
-        # cycle = []
-        # iterate = 0
-        # for x in itertools.islice(itertools.cycle(range(3)), 3): # 3 options, 3 rounds, adapted from StackOverflow
-        #     cycle.append(x)
-        # return self.moves[cycle[iterate]]
-        return self.moves[1]
-
-    # def learn(self):
-    #     my_moves = []
+class Cycler(Player): # TODO: pass previous move to this move
+    my_move = ''
+    def move(self, my_move=my_move):
+        if self.my_move == 'rock':
+            my_move = 'paper'
+            return self.moves[1]
+        if self.my_move == 'paper':
+            my_move = 'scissors'
+            return self.moves[2]
+        else:
+            my_move = 'rock'
+            return self.moves[0]
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
@@ -68,9 +67,10 @@ class Game:
     def play_round(self):
         move1 = self.p1.move()
         move2 = self.p2.move()
-        print(f"Player 1: {move1} \nPlayer 2: {move2}\n-----\n")
-        p1_recall = self.p1.learn(move1, move2)
-        p2_recall = self.p2.learn(move2, move1)
+        print(f"Player 1: {move1} \nPlayer 2: {move2}\n-----")
+
+        p1_recall, p1_my_move, p1_opp_move = self.p1.learn(move1, move2)
+        p2_recall, p2_my_move, p2_opp_move = self.p2.learn(move2, move1)
         print(f"Player 1:\n  {p1_recall} \nPlayer 2:\n  {p2_recall}")
 
     def play_game(self):
