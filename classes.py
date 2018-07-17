@@ -76,7 +76,7 @@ class Game:
     def play_game(self):
         print("Game start!")
         rounds = 3
-        for round in range(rounds):
-            print(f"Round {round}:")
+        for round in range(1,rounds+1): # non-technical counting
+            print(f"\n..........\nRound {round}:\n..........\n")
             self.play_round()
         print("Game over!")
