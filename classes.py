@@ -7,7 +7,7 @@ in this game"""
 class Player:
     moves = ['rock', 'paper', 'scissors']
 
-    def move(self, my_move=None, opp_move=None):
+    def move(self):
         return 'scissors'
 
     def learn(self, my_move, opp_move):
@@ -23,10 +23,12 @@ class Player:
         """
         return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
 
-class Human(Player):
-  def move():
-      # validate input
-    pass
+class Human(Player): # TODO: fix extra arg error
+    def move():
+        hmove = input("What's your play? ").lower()
+        while hmove not in self.moves:
+            hmove = input("What's your play? ").lower()
+        return hmove
 
 # may need to add intermediate Computer player class
 class Rocker(Player):
