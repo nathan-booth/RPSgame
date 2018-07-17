@@ -10,7 +10,7 @@ class Player:
     def move(self):
         return 'scissors'
 
-    def learn(self, my_move, opp_move):
+    def recall(self, my_move, opp_move):
         """
         Inputs:
             my_move (str):
@@ -18,7 +18,7 @@ class Player:
         Outputs:
             opp_move (str):
         Example:
-            >>> learn('paper', 'rock')
+            >>> recall('paper', 'rock')
             Your opponent played rock in the previous round.
         """
         return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
@@ -61,6 +61,17 @@ class Game:
         self.p2 = p2
 
     def score(self, p1_move, p2_move): # FIX: track score
+        """
+        Inputs:
+            p1_move (str): Player 1's move
+            p2_move (str): Player 2's move
+        Outputs:
+            Winner (str): Whether player 1 or 2 won
+            Scoreboard (str): Increment scores
+        Purpose:
+            Compute the winner of a round and display a scoreboard of the game thus far.
+        Example:
+        """
         p1_score, p2_score = 0, 0
         score = f" Score\n {p1_score} | {p2_score}\n-----"
 
@@ -82,8 +93,8 @@ class Game:
 
         print(self.score(move1, move2))
 
-        p1_recall, p1_my_move, p1_opp_move = self.p1.learn(move1, move2)
-        p2_recall, p2_my_move, p2_opp_move = self.p2.learn(move2, move1)
+        p1_recall, p1_my_move, p1_opp_move = self.p1.recall(move1, move2)
+        p2_recall, p2_my_move, p2_opp_move = self.p2.recall(move2, move1)
         print(f"Player 1:\n  {p1_recall} \nPlayer 2:\n  {p2_recall}")
 
     def play_game(self):
@@ -92,4 +103,7 @@ class Game:
         for round in range(1,rounds+1): # non-technical counting
             print(f"\n..........\nRound {round}:\n..........\n")
             self.play_round()
+            # compute winner
+            # display scoreboard
+            # remember past move
         print("Game over!")
