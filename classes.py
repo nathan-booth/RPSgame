@@ -37,7 +37,7 @@ class Randomizer(Player):
     def move(self):
         return self.moves[randint(0, len(self.moves)-1)]
 
-class Copycat(Player):
+class Copycat(Player): # TODO: recall previous opp move and copy the move for next move, start with rock
     pass
 
 class Cycler(Player): # TODO: pass previous move to this move
