@@ -28,7 +28,7 @@ class Player:
         opp_moves.append(opp_move)
 
         opp_previous_move = opp_moves[-1] # last move
-        print(f"Your opponent played {opp_previous_move} in the previous round.")
+        return f"Your opponent played {opp_previous_move} in the previous round."
 
 class Human(Player):
   def move():
@@ -69,9 +69,10 @@ class Game:
     def play_round(self):
         move1 = self.p1.move()
         move2 = self.p2.move()
-        print(f"Player 1: {move1}  Player 2: {move2}")
-        self.p1.learn(move1, move2)
-        self.p2.learn(move2, move1)
+
+        p1_recall = self.p1.learn(move1, move2)
+        p2_recall = self.p2.learn(move2, move1)
+        print(f"Player 1: {move1} \n  {p1_recall} \nPlayer 2: {move2} \n  {p2_recall}")
 
     def play_game(self):
         print("Game start!")
