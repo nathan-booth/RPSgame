@@ -18,4 +18,4 @@ The game is written in Python 3.7. While a simpler version using fewer classes i
 ## Process
 I used [pycodestyle](https://github.com/pycqa/pycodestyle) to check adherence to PEP8 guidelines.
 
-Near the end of the project, I started adhering to Udaity's [git style guide](https://udacity.github.io/git-styleguide/).
+Near the end of the project, I started adhering to Udacity's [git style guide](https://udacity.github.io/git-styleguide/).
