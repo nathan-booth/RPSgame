@@ -160,14 +160,15 @@ class Game:
         Purpose:
           Play a match of several rounds. User selects the number of rounds.
         """
+        rounds = int(input('How many rounds do you want to play? '))
         print("Let's begin!\n")
-        rounds, p1_score, p2_score = 5, 0, 0
+        p1_score, p2_score = 0, 0
         # default starting moves for Players that require one
         prev_p1_move = 'scissors'
         prev_p2_move = 'rock'
 
         for round in range(1,rounds+1): # non-technical counting
-            print(f"\n..........\n Round {round}:\n..........\n")
+            print(f"\n..........\n Round {round}\n..........\n")
             p1_move, p2_move = self.play_round(round, rounds, prev_p1_move, prev_p2_move)
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
