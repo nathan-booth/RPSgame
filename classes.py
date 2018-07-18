@@ -7,6 +7,8 @@ from random import randint
 
 """The Player class is the parent class for all of the Players
 in this game"""
+
+
 class Player:
     moves = ['rock', 'paper', 'scissors']
 
@@ -25,6 +27,7 @@ class Player:
         print(f"Your opponent played {opp_move} in the previous round.")
         return my_move, opp_move
 
+
 class Human(Player):
     def move(self, my_move, opp_move):
         hmove = input("What's your play? ").lower()
@@ -32,16 +35,22 @@ class Human(Player):
             hmove = input("What's your play? ").lower()
         return hmove
 
+
 class Rocker(Player):
     def move(self, my_move, opp_move):
         return 'rock'
+
 
 class Randomizer(Player):
     def move(self, my_move, opp_move):
         return self.moves[randint(0, len(self.moves)-1)]
 
+
 class Copycat(Player):
-    """ Given the opposing player's previous move, imitate that move for this round. """
+    """
+    Given the opposing player's previous move,
+    imitate that move for this round.
+    """
     def move(self, my_move, opp_move):
         if opp_move == 'rock':
             return 'rock'
@@ -50,15 +59,20 @@ class Copycat(Player):
         else:
             return 'scissors'
 
+
 class Cycler(Player):
-    """ Given the Cycler's previous move, continue to the next move in the cycle. Ex: Rock -> Paper -> Scissors -> Rock -> ... """
+    """
+    Given the Cycler's previous move,
+    continue to the next move in the cycle.
+    Ex: Rock -> Paper -> Scissors -> Rock -> ... """
     def move(self, my_move, opp_move):
         if my_move == 'rock':
-            return self.moves[1] # paper
+            return self.moves[1]  # paper
         if my_move == 'paper':
-            return self.moves[2] # scissors
+            return self.moves[2]  # scissors
         else:
-            return self.moves[0] # rock
+            return self.moves[0]  # rock
+
 
 class Game:
     def __init__(self, p1, p2):
@@ -77,15 +91,15 @@ class Game:
             Compute the winner of a round.
         """
         if p1_move == p2_move:
-            return "No winner.\n", 0 # no winner
-        elif ((p1_move == 'rock' and p2_move == 'scissors') or \
-              (p1_move == 'scissors' and p2_move == 'paper') or \
+            return "No winner.\n", 0  # no winner
+        elif ((p1_move == 'rock' and p2_move == 'scissors') or
+              (p1_move == 'scissors' and p2_move == 'paper') or
               (p1_move == 'paper' and p2_move == 'rock')):
-              print("Player 1 wins!\n")
-              return 1 # player 1
+            print("Player 1 wins!\n")
+            return 1  # player 1
         else:
             print("Player 2 wins!\n")
-            return 2 # player 2
+            return 2  # player 2
 
     def scoreboard(self, rnd_winner, prev_p1_score, prev_p2_score):
         # TODO: if final round, then display final scoreboard
@@ -99,7 +113,8 @@ class Game:
             p1_score (int): Player 1's updated score
             p2_score (int): Player 2's updated score
         Purpose:
-            Display a scoreboard of the game and return the updated player scores.
+            Display a scoreboard of the game and
+            return the updated player scores.
         """
         if rnd_winner == 1:
             new_p1_score = prev_p1_score + 1
@@ -112,6 +127,7 @@ class Game:
         else:
             print(f" Score\n {prev_p1_score} | {prev_p2_score}\n-----")
             return prev_p1_score, prev_p2_score
+
     def final_score(self, p1_score, p2_score):
         """
         Inputs:
@@ -167,9 +183,10 @@ class Game:
         prev_p1_move = 'scissors'
         prev_p2_move = 'rock'
 
-        for round in range(1,rounds+1): # non-technical counting
+        for round in range(1, rounds+1):  # non-technical counting
             print(f"\n..........\n Round {round}\n..........\n")
-            p1_move, p2_move = self.play_round(round, rounds, prev_p1_move, prev_p2_move)
+            p1_move, p2_move = self.play_round(round, rounds,
+                                               prev_p1_move, prev_p2_move)
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
             prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
