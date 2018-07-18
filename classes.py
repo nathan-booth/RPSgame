@@ -41,14 +41,18 @@ class Randomizer(Player):
         return self.moves[randint(0, len(self.moves)-1)]
 
 class Copycat(Player):
-    # TODO: recall previous opp move and copy the move for next move and set default first move
-    pass
+    """ Given the opposing player's previous move, imitate that move for this round. """
+    def move(self, my_move, opp_move):
+        if opp_move == 'rock':
+            return 'rock'
+        if opp_move == 'paper':
+            return 'paper'
+        else:
+            return 'scissors'
 
 class Cycler(Player):
-    # TODO: set default first move and pass previous move to this move method
-    """
-    Given the Cycler's previous move, continue to the next move in the cycle.
-    Rock -> Paper -> Scissors -> Rock -> ...
+    """ Given the Cycler's previous move, continue to the next move in the cycle.
+    Ex: Rock -> Paper -> Scissors -> Rock -> ...
     """
     def move(self, my_move, opp_move):
         if my_move == 'rock':
