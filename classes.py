@@ -25,7 +25,7 @@ class Player:
         return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
 
 class Human(Player): # TODO: fix extra arg error
-    def move():
+    def move(self):
         hmove = input("What's your play? ").lower()
         while hmove not in self.moves:
             hmove = input("What's your play? ").lower()
