@@ -41,8 +41,11 @@ class Copycat(Player): # TODO: recall previous opp move and copy the move for ne
     pass
 
 class Cycler(Player): # TODO: pass previous move to this move
-    my_move = ''
-    def move(self, my_move=my_move):
+    """
+    Given the Cycler's previous move, continue to the next move in the cycle.
+    Rock -> Paper -> Scissors -> Rock -> ...
+    """
+    def move(self):
         if self.my_move == 'rock':
             my_move = 'paper'
             return self.moves[1]
