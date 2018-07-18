@@ -1,6 +1,7 @@
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round. By Udacity"""
 from random import randint
+# TODO: test with pycodestyle tool
 
 """The Player class is the parent class for all of the Players
 in this game"""
@@ -22,7 +23,7 @@ class Player:
         print(f"Your opponent played {opp_move} in the previous round.")
         return my_move, opp_move
 
-class Human(Player): # TODO: test
+class Human(Player):
     def move(self):
         hmove = input("What's your play? ").lower()
         while hmove not in self.moves:
@@ -81,6 +82,7 @@ class Game:
             return 2 # player 2
 
     def scoreboard(self, rnd_winner, prev_p1_score, prev_p2_score):
+        # TODO: if final round, then display final scoreboard
         """
         Inputs:
             rnd_winner (int): 1 for player 1, 2 for player 2
@@ -121,7 +123,9 @@ class Game:
         return p1_move, p2_move
 
     def play_game(self):
-        # TODO: add functionality: set custom rounds, set players
+        # TODO: method for exactly one round
+        # TODO: method for > 1 round
+        # TODO: set players, types of computers, or human player
         print("Game start!\n")
         rounds, p1_score, p2_score = 5, 0, 0
 
