@@ -13,25 +13,24 @@ class Player:
     def recall(self, my_move, opp_move):
         """
         Inputs:
-            my_move (str): 'rock' 'paper' or 'sciessors'
-            opp_move (str): 'rock' 'paper' or 'sciessors'
+            my_move (str): 'rock' 'paper' or 'scissors'
+            opp_move (str): 'rock' 'paper' or 'scissors'
         Outputs:
-            my_move (str): 'rock' 'paper' or 'sciessors'
-            opp_move (str): 'rock' 'paper' or 'sciessors'
+            my_move (str): 'rock' 'paper' or 'scissors'
+            opp_move (str): 'rock' 'paper' or 'scissors'
         Example:
             >>> recall('paper', 'rock')
             Your opponent played rock in the previous round.
         """
         return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
 
-class Human(Player): # TODO: fix extra arg error
+class Human(Player): # TODO: test
     def move(self):
         hmove = input("What's your play? ").lower()
         while hmove not in self.moves:
             hmove = input("What's your play? ").lower()
         return hmove
 
-# may need to add intermediate Computer player class
 class Rocker(Player):
     def move(self):
         return 'rock'
