@@ -22,7 +22,8 @@ class Player:
             >>> recall('paper', 'rock')
             Your opponent played rock in the previous round.
         """
-        return f"Your opponent played {opp_move} in the previous round.", my_move, opp_move
+        print(f"Your opponent played {opp_move} in the previous round.")
+        return my_move, opp_move
 
 class Human(Player): # TODO: test
     def move(self):
@@ -157,5 +158,6 @@ class Game:
             p1_move, p2_move = self.play_round()
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p)
+
 
         print("\nGame over!")
