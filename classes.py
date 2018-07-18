@@ -121,10 +121,9 @@ class Game:
         return p1_move, p2_move
 
     def play_game(self):
+        # TODO: add functionality: set custom rounds, set players
         print("Game start!\n")
-        rounds = 5
-        p1_score = 0
-        p2_score = 0
+        rounds, p1_score, p2_score = 5, 0, 0
         for round in range(1,rounds+1): # non-technical counting
             print(f"\n..........\nRound {round}:\n..........\n")
             p1_move, p2_move = self.play_round()
