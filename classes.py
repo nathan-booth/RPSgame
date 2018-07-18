@@ -18,9 +18,6 @@ class Player:
         Outputs:
             my_move (str): 'rock' 'paper' or 'scissors'
             opp_move (str): 'rock' 'paper' or 'scissors'
-        Example:
-            >>> recall('paper', 'rock')
-            Your opponent played rock in the previous round.
         """
         print(f"Your opponent played {opp_move} in the previous round.")
         return my_move, opp_move
@@ -67,16 +64,10 @@ class Game:
             p1_move (str): Player 1's move
             p2_move (str): Player 2's move
         Outputs:
-            Winner (str): Whether player 1 or 2 won
+            Winner: Print whether player 1 or 2 won
+            Winner (int): 0 for tie, 1 for player 1, 2 for player 2
         Purpose:
             Compute the winner of a round.
-        Example:
-            >>> self.winner('rock', 'paper')
-            Player 2 wins!
-            >>> self.winner('paper', 'paper')
-            No winner.
-            >>> self.winner('rock', 'scissors')
-            Player 1 wins!
         """
         if p1_move == p2_move:
             return "No winner.\n", 0 # no winner
@@ -92,13 +83,15 @@ class Game:
     def scoreboard(self, rnd_winner, prev_p1_score, prev_p2_score):
         """
         Inputs:
-            scored (int): Encoding of which player score to increment
+            rnd_winner (int): 1 for player 1, 2 for player 2
+            prev_p1_score (int): Previous score for player 1
+            prev_p2_score (int): Previous score for player 2
         Outputs:
+            Scoreboard: display of current player scores
             p1_score (int): Player 1's updated score
             p2_score (int): Player 2's updated score
-            Scoreboard
         Purpose:
-            Display a scoreboard of the game and track the current player scores.
+            Display a scoreboard of the game and return the updated player scores.
         """
         if rnd_winner == 1:
             new_p1_score = prev_p1_score + 1
@@ -119,7 +112,7 @@ class Game:
             p1_move (str): Player 1's move
             p2_move (str): Player 2's move
         Purpose:
-            Get the moves of two players.
+            Print and return the moves of two players.
         """
         p1_move = self.p1.move()
         p2_move = self.p2.move()
