@@ -1,5 +1,7 @@
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round. By Udacity"""
+# future TODO: add method to Game for rock, paper, scissors, lizard, spock
+# future TODO: add tournament method with each or selected computers
 from random import randint
 # TODO: test with pycodestyle tool
 
