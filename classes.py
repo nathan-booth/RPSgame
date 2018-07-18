@@ -7,8 +7,8 @@ in this game"""
 class Player:
     moves = ['rock', 'paper', 'scissors']
 
-    def move(self):
-        return 'scissors'
+    def move(self, my_move='scissors', opp_move='rock'):
+        return my_move
 
     def recall(self, my_move, opp_move):
         """
@@ -37,24 +37,21 @@ class Randomizer(Player):
     def move(self):
         return self.moves[randint(0, len(self.moves)-1)]
 
-class Copycat(Player): # TODO: recall previous opp move and copy the move for next move, start with rock
+class Copycat(Player): # TODO: recall previous opp move and copy the move for next move and set default first move
     pass
 
-class Cycler(Player): # TODO: pass previous move to this move
+class Cycler(Player): # TODO: set default first move and pass previous move to this move method
     """
     Given the Cycler's previous move, continue to the next move in the cycle.
     Rock -> Paper -> Scissors -> Rock -> ...
     """
-    def move(self):
-        if self.my_move == 'rock':
-            my_move = 'paper'
-            return self.moves[1]
-        if self.my_move == 'paper':
-            my_move = 'scissors'
-            return self.moves[2]
+    def move(self, my_move):
+        if my_move == 'rock':
+            return self.moves[1] # paper
+        if my_move == 'paper':
+            return self.moves[2] # scissors
         else:
-            my_move = 'rock'
-            return self.moves[0]
+            return self.moves[0] # rock
 
 class Game:
     def __init__(self, p1, p2):
@@ -108,7 +105,7 @@ class Game:
             print(f" Score\n {prev_p1_score} | {prev_p2_score}\n-----")
             return prev_p1_score, prev_p2_score
 
-    def play_round(self):
+    def play_round(self, def_p1_move, def_p2_move):
         """
         Inputs: None
         Outputs:
@@ -127,9 +124,14 @@ class Game:
         # TODO: add functionality: set custom rounds, set players
         print("Game start!\n")
         rounds, p1_score, p2_score = 5, 0, 0
+
+        # set default first moves for both players
+        def_p1_move = self.moves[randint(0, len(self.moves)-1)]
+        def_p2_move = self.moves[randint(0, len(self.moves)-1)]
+
         for round in range(1,rounds+1): # non-technical counting
             print(f"\n..........\nRound {round}:\n..........\n")
-            p1_move, p2_move = self.play_round()
+            p1_move, p2_move = self.play_round(def_p1_move, def_p2_move)
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
             prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
