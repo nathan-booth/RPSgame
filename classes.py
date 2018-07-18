@@ -10,7 +10,7 @@ in this game"""
 class Player:
     moves = ['rock', 'paper', 'scissors']
 
-    def move(self, my_move='scissors', opp_move='rock'):
+    def move(self, my_move, opp_move):
         return my_move
 
     def recall(self, my_move, opp_move):
@@ -26,29 +26,31 @@ class Player:
         return my_move, opp_move
 
 class Human(Player):
-    def move(self):
+    def move(self, my_move, opp_move):
         hmove = input("What's your play? ").lower()
         while hmove not in self.moves:
             hmove = input("What's your play? ").lower()
         return hmove
 
 class Rocker(Player):
-    def move(self):
+    def move(self, my_move, opp_move):
         return 'rock'
 
 class Randomizer(Player):
-    def move(self):
+    def move(self, my_move, opp_move):
         return self.moves[randint(0, len(self.moves)-1)]
 
-class Copycat(Player): # TODO: recall previous opp move and copy the move for next move and set default first move
+class Copycat(Player):
+    # TODO: recall previous opp move and copy the move for next move and set default first move
     pass
 
-class Cycler(Player): # TODO: set default first move and pass previous move to this move method
+class Cycler(Player):
+    # TODO: set default first move and pass previous move to this move method
     """
     Given the Cycler's previous move, continue to the next move in the cycle.
     Rock -> Paper -> Scissors -> Rock -> ...
     """
-    def move(self, my_move):
+    def move(self, my_move, opp_move):
         if my_move == 'rock':
             return self.moves[1] # paper
         if my_move == 'paper':
@@ -109,20 +111,31 @@ class Game:
             print(f" Score\n {prev_p1_score} | {prev_p2_score}\n-----")
             return prev_p1_score, prev_p2_score
 
-    def play_round(self, def_p1_move, def_p2_move):
+    def play_round(self, current_rnd, final_rnd, prev_p1_move, prev_p2_move):
         """
-        Inputs: None
+        Inputs:
+            current_rnd (int):
+            final_rnd (int):
         Outputs:
             p1_move (str): Player 1's move
             p2_move (str): Player 2's move
         Purpose:
             Print and return the moves of two players.
         """
-        p1_move = self.p1.move()
-        p2_move = self.p2.move()
-        print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
+        #if round is 1, then use default moves
+        if current_rnd == 1:
+            p1_move = self.p1.move('scissors', 'rock')
+            p2_move = self.p2.move('scissors', 'rock')
+            print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
+            return p1_move, p2_move
+        # if round is final round, then call final scoreboard
+        # else, play normally
+        else:
+            p1_move = self.p1.move(prev_p1_move, prev_p2_move)
+            p2_move = self.p2.move(prev_p1_move, prev_p2_move)
+            print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
+            return p1_move, p2_move
 
-        return p1_move, p2_move
 
     def play_match(self):
         # TODO: set players, types of computers, or human player
@@ -132,19 +145,18 @@ class Game:
         Purpose:
           Play a match of several rounds. User selects the number of rounds.
         """
-        print("Match start!\n")
+        print("Let's begin!\n")
         rounds, p1_score, p2_score = 5, 0, 0
 
-        # set default first moves for both players
-        def_p1_move = self.moves[randint(0, len(self.moves)-1)]
-        def_p2_move = self.moves[randint(0, len(self.moves)-1)]
-
+        prev_p1_move = 'scissors'
+        prev_p2_move = 'rock'
+        
         for round in range(1,rounds+1): # non-technical counting
-            print(f"\n..........\nRound {round}:\n..........\n")
-            p1_move, p2_move = self.play_round(def_p1_move, def_p2_move)
+            print(f"\n..........\n Round {round}:\n..........\n")
+            p1_move, p2_move = self.play_round(round, rounds, prev_p1_move, prev_p2_move)
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
             prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
             prev_p2_move, p1_opp_move = self.p2.recall(p2_move, p1_move)
 
-        print("\nMatch over!")
+        print("\nGame over.")
