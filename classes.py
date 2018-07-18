@@ -135,14 +135,9 @@ class Game:
             Player 2:
                 Your opponent played rock in the previous round.
         """
-        # Move
         p1_move = self.p1.move()
         p2_move = self.p2.move()
         print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
-
-        # Score
-        # scoreboard, p1_score, p2_score = self.score(p1_move, p2_move)
-        # print(scoreboard)
 
         # Recall
         p1_recall, p1_my_move, p1_opp_move = self.p1.recall(p1_move, p2_move)
@@ -153,7 +148,7 @@ class Game:
         return p1_move, p2_move
 
     def play_game(self):
-        print("Game start!")
+        print("Game start!\n")
         rounds = 5
         p1_score = 0
         p2_score = 0
@@ -163,4 +158,4 @@ class Game:
             winning_p = self.winner(p1_move, p2_move)
             p1_score, p2_score = self.scoreboard(winning_p)
 
-        print("Game over!")
+        print("\nGame over!")
