@@ -51,9 +51,7 @@ class Copycat(Player):
             return 'scissors'
 
 class Cycler(Player):
-    """ Given the Cycler's previous move, continue to the next move in the cycle.
-    Ex: Rock -> Paper -> Scissors -> Rock -> ...
-    """
+    """ Given the Cycler's previous move, continue to the next move in the cycle. Ex: Rock -> Paper -> Scissors -> Rock -> ... """
     def move(self, my_move, opp_move):
         if my_move == 'rock':
             return self.moves[1] # paper
@@ -114,6 +112,21 @@ class Game:
         else:
             print(f" Score\n {prev_p1_score} | {prev_p2_score}\n-----")
             return prev_p1_score, prev_p2_score
+    def final_score(self, p1_score, p2_score):
+        """
+        Inputs:
+            p1_score (int): Player 1's score
+            p2_score (int): Player 2's score
+        Outputs: Display scoreboard and winner text.
+        Purpose: Display the final score for each player in a scoreboard.
+        """
+        print(f"\nFinal Score\n  {p1_score} | {p2_score}\n --------")
+        if p1_score > p2_score:
+            print('Congratulations to Player 1!')
+        if p1_score < p2_score:
+            print('Congratulations to Player 2!')
+        else:
+            print("It's a draw!")
 
     def play_round(self, current_rnd, final_rnd, prev_p1_move, prev_p2_move):
         """
@@ -149,7 +162,7 @@ class Game:
         """
         print("Let's begin!\n")
         rounds, p1_score, p2_score = 5, 0, 0
-
+        # default starting moves for Players that require one
         prev_p1_move = 'scissors'
         prev_p2_move = 'rock'
 
@@ -160,5 +173,5 @@ class Game:
             p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
             prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
             prev_p2_move, p1_opp_move = self.p2.recall(p2_move, p1_move)
-
+        self.final_score(p1_score, p2_score)
         print("\nGame over.")
