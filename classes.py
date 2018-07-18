@@ -140,12 +140,6 @@ class Game:
         p2_move = self.p2.move()
         print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
 
-        # Recall
-        p1_recall, p1_my_move, p1_opp_move = self.p1.recall(p1_move, p2_move)
-        p2_recall, p2_my_move, p2_opp_move = self.p2.recall(p2_move, p1_move)
-        print(f"Player 1:\n  {p1_recall} \nPlayer 2:\n  {p2_recall}")
-
-        # Values to update
         return p1_move, p2_move
 
     def play_game(self):
@@ -157,7 +151,8 @@ class Game:
             print(f"\n..........\nRound {round}:\n..........\n")
             p1_move, p2_move = self.play_round()
             winning_p = self.winner(p1_move, p2_move)
-            p1_score, p2_score = self.scoreboard(winning_p)
-
+            p1_score, p2_score = self.scoreboard(winning_p, p1_score, p2_score)
+            prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
+            prev_p2_move, p1_opp_move = self.p2.recall(p2_move, p1_move)
 
         print("\nGame over!")
