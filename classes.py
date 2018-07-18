@@ -114,27 +114,12 @@ class Game:
 
     def play_round(self):
         """
-        Inputs:
-            p1_score (int): Player 1's score
-            p2_score (int): Player 2's score
-            p1_move (str): Player 1's previous move
-            p2_move (str): Player 2's previous move
+        Inputs: None
         Outputs:
-            winnner (str): Winner of the round
-            scoreboard (str): Match score
-            player_actions (str): Player moves from current round
+            p1_move (str): Player 1's move
+            p2_move (str): Player 2's move
         Purpose:
-        Example:
-            >>> self.play_round(1, 2, 'rock', 'paper')
-            Player 2 wins!
-            --- Round 1 Score ---
-                Player 1: 1
-                Player 2: 3
-            --- Player Actions ---
-            Player 1:
-                Your opponent played paper in the previous round.
-            Player 2:
-                Your opponent played rock in the previous round.
+            Get the moves of two players.
         """
         p1_move = self.p1.move()
         p2_move = self.p2.move()
