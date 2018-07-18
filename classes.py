@@ -60,7 +60,7 @@ class Game:
         self.p1 = p1
         self.p2 = p2
 
-    def winner(self, p1_move, p2_move): # FIX: track score
+    def winner(self, p1_move, p2_move):
         """
         Inputs:
             p1_move (str): Player 1's move
@@ -82,11 +82,13 @@ class Game:
         elif ((p1_move == 'rock' and p2_move == 'scissors') or \
               (p1_move == 'scissors' and p2_move == 'paper') or \
               (p1_move == 'paper' and p2_move == 'rock')):
-              return "Player 1 wins!\n", 1 # player 1
+              print("Player 1 wins!\n")
+              return 1 # player 1
         else:
-            return "Player 2 wins!\n", 2 # player 2
+            print("Player 2 wins!\n")
+            return 2 # player 2
 
-    def score(self, scored):
+    def scoreboard(self, rnd_winner, prev_p1_score, prev_p2_score):
         """
         Inputs:
             scored (int): Encoding of which player score to increment
@@ -97,8 +99,17 @@ class Game:
         Purpose:
             Display a scoreboard of the game and track the current player scores.
         """
-        # score = f" Score\n {p1_score} | {p2_score}\n-----"
-        pass
+        if rnd_winner == 1:
+            new_p1_score = prev_p1_score + 1
+            print(f" Score\n {new_p1_score} | {prev_p2_score}\n-----")
+            return new_p1_score, prev_p2_score
+        elif rnd_winner == 2:
+            new_p2_score = prev_p2_score + 1
+            print(f" Score\n {prev_p1_score} | {new_p2_score}\n-----")
+            return prev_p1_score, new_p2_score
+        else:
+            print(f" Score\n {prev_p1_score} | {prev_p2_score}\n-----")
+            return prev_p1_score, prev_p2_score
 
     def play_round(self):
         """
@@ -130,8 +141,8 @@ class Game:
         print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
 
         # Score
-        scoreboard, p1_score, p2_score = self.score(p1_move, p2_move)
-        print(scoreboard)
+        # scoreboard, p1_score, p2_score = self.score(p1_move, p2_move)
+        # print(scoreboard)
 
         # Recall
         p1_recall, p1_my_move, p1_opp_move = self.p1.recall(p1_move, p2_move)
@@ -144,8 +155,12 @@ class Game:
     def play_game(self):
         print("Game start!")
         rounds = 5
+        p1_score = 0
+        p2_score = 0
         for round in range(1,rounds+1): # non-technical counting
             print(f"\n..........\nRound {round}:\n..........\n")
             p1_move, p2_move = self.play_round()
+            winning_p = self.winner(p1_move, p2_move)
+            p1_score, p2_score = self.scoreboard(winning_p)
 
         print("Game over!")
