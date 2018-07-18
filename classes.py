@@ -122,20 +122,18 @@ class Game:
         Purpose:
             Print and return the moves of two players.
         """
-        #if round is 1, then use default moves
         if current_rnd == 1:
             p1_move = self.p1.move('scissors', 'rock')
             p2_move = self.p2.move('scissors', 'rock')
             print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
             return p1_move, p2_move
+        # TODO: feat: final scoreboard
         # if round is final round, then call final scoreboard
-        # else, play normally
         else:
             p1_move = self.p1.move(prev_p1_move, prev_p2_move)
             p2_move = self.p2.move(prev_p1_move, prev_p2_move)
             print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
             return p1_move, p2_move
-
 
     def play_match(self):
         # TODO: set players, types of computers, or human player
@@ -150,7 +148,7 @@ class Game:
 
         prev_p1_move = 'scissors'
         prev_p2_move = 'rock'
-        
+
         for round in range(1,rounds+1): # non-technical counting
             print(f"\n..........\n Round {round}:\n..........\n")
             p1_move, p2_move = self.play_round(round, rounds, prev_p1_move, prev_p2_move)
