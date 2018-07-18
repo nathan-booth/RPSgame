@@ -3,13 +3,11 @@ and reports both Player's scores each round. By Udacity"""
 # future TODO: add method to Game for rock, paper, scissors, lizard, spock
 # future TODO: add tournament method with each or selected computers
 from random import randint
-# TODO: test with pycodestyle tool
-
-"""The Player class is the parent class for all of the Players
-in this game"""
 
 
 class Player:
+    """The Player class is the parent class for all of the Players
+    in this game"""
     moves = ['rock', 'paper', 'scissors']
 
     def move(self, my_move, opp_move):
@@ -102,7 +100,6 @@ class Game:
             return 2  # player 2
 
     def scoreboard(self, rnd_winner, prev_p1_score, prev_p2_score):
-        # TODO: if final round, then display final scoreboard
         """
         Inputs:
             rnd_winner (int): 1 for player 1, 2 for player 2
@@ -160,8 +157,6 @@ class Game:
             p2_move = self.p2.move('scissors', 'rock')
             print(f"Player 1: {p1_move} \nPlayer 2: {p2_move}\n-----")
             return p1_move, p2_move
-        # TODO: feat: final scoreboard
-        # if round is final round, then call final scoreboard
         else:
             p1_move = self.p1.move(prev_p1_move, prev_p2_move)
             p2_move = self.p2.move(prev_p1_move, prev_p2_move)
@@ -169,7 +164,6 @@ class Game:
             return p1_move, p2_move
 
     def play_match(self):
-        # TODO: set players, types of computers, or human player
         """
         Inputs: total_rnds
         Outputs: None
