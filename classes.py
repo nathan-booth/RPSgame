@@ -124,11 +124,15 @@ class Game:
 
         return p1_move, p2_move
 
-    def play_game(self):
-        # TODO: method for exactly one round
-        # TODO: method for > 1 round
+    def play_match(self):
         # TODO: set players, types of computers, or human player
-        print("Game start!\n")
+        """
+        Inputs: total_rnds
+        Outputs: None
+        Purpose:
+          Play a match of several rounds. User selects the number of rounds.
+        """
+        print("Match start!\n")
         rounds, p1_score, p2_score = 5, 0, 0
 
         # set default first moves for both players
@@ -143,4 +147,4 @@ class Game:
             prev_p1_move, prev_p2_move = self.p1.recall(p1_move, p2_move)
             prev_p2_move, p1_opp_move = self.p2.recall(p2_move, p1_move)
 
-        print("\nGame over!")
+        print("\nMatch over!")

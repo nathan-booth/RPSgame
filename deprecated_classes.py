@@ -3,18 +3,7 @@
 # rock paper scissors spock lizard
 # running computer tournament
 class Game():
-    """
-    Inputs:
-        total_rnds (num): Number of rounds to play.
-    Outputs:
-        None
-    Purpose:
-      Initialize the game starting conditions, including starting scores and the number of rounds to play, and run the game.
-    Example:
-        >>> game = classes.Game(3)
-        >>> print(game.total_rnds)
-        3
-    """
+    
     human_score = 0
     computer_score = 0
 
@@ -32,7 +21,7 @@ class Game():
         Example:
             >>> game = classes.Game(3)
             >>> game.play_rnd()
-            
+
         """
         hMove = Human.move()
         cMove = cPlayer.move() # testing; computer player should be set earlier

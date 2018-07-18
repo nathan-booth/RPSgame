@@ -18,4 +18,4 @@ from random import randint
 
 if __name__ == '__main__':
     game = classes.Game(classes.Cycler(), classes.Randomizer())
-    game.play_game()
+    game.play_match()
